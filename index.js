@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoClient.connect((err, client) => { //стандартное подключение к бд типа MongoDb
   if(err) return console.log(err); // если ошибка, то все останавливаем и реторнем ошибку
   dbClient = client;
-  app.locals.collection = client.db('todolist').collection('data'); // указыем имя кластера
+  app.locals.collection = client.db('todolist').collection(''); // указыем имя кластера
   app.listen(config.PORT, () => console.log(`Server start on ${config.PORT}`)) // начинаем слушать
 })
 
@@ -22,3 +22,16 @@ app.post('/login', (req, res) => {
 
 })
 app.get('/register', (req, res) => {res.render('register')})
+app.post('/register', (req, res) => {
+  let login = req.body.login;
+  let password = req.body.password;
+  if(login && password){
+    console.log("Успешно" + login + password + but);
+  }
+  else {
+    res.json({
+      ok: false,
+      error: "Не введен пароль или логин"
+    });
+  }
+})
