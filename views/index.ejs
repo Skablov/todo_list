@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Авторизация</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <style media="screen">
       h1{
         text-align: center;
@@ -17,14 +18,26 @@
       <h1>Авторизация</h1>
     </header>
     <section>
-      <form method="post">
+      <label id="err"></label>
+      <form>
         <label>Ваш логин</label><br><br>
-        <input type="text" name="login" placeholder="Введите ваш логин"><br><br>
+        <input type="text" id="login" placeholder="Введите ваш логин"><br><br>
         <label>Ваш пароль</label><br><br>
-        <input type="text" name="password" placeholder="Введите ваш пароль"><br><br>
-        <button type="submit" >Войти </button>
+        <input type="text" id="password" placeholder="Введите ваш пароль"><br><br>
+        <button class="register-button">Войти </button>
         <a href="/register">Регистрация</a>
       </form>
     </section>
+    <script>
+      $('.register-button').on('click', function(e)
+      {
+        var date = {
+          login: $('#login').val(),
+          password: $('#password').val()
+        };
+          console.log(date);
+
+      })
+    </script>
   </body>
 </html>

@@ -5,8 +5,6 @@ const mongoClient = new MongoClient(config.MONGO_URL, { useNewUrlParser: true })
 const objectId = require("mongodb").ObjectID;
 const bodyParser = require("body-parser"); // Подключение необходимого стека
 
-
-
 const app = express(); // включаем express
 
 app.set('view engine', 'ejs');
@@ -19,7 +17,8 @@ mongoClient.connect((err, client) => { //стандартное подключе
   app.listen(config.PORT, () => console.log(`Server start on ${config.PORT}`)) // начинаем слушать
 })
 
-app.get('/', (req, res) =>
-{
-  res.render('index');
-});
+app.get('/', (req, res) => {res.render('index')});
+app.post('/login', (req, res) => {
+
+})
+app.get('/register', (req, res) => {res.render('register')})
